@@ -1,13 +1,17 @@
 <template>
   <div class="home">
-<h1> Bienvenue sur game index</h1>
+    <Header/>
+    <SearchBar/>
   </div>
 </template>
 
 <script>
+import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
 export default {
   name: 'Home',
-  props: {
+    components: {SearchBar, Header},
+    props: {
     msg: String
   }
 }
