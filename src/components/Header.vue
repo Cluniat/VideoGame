@@ -34,8 +34,8 @@
     height: 125px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding:0 20px;
+    justify-content: center;
+    width: 100%;
 }
 .cross{
     position: relative;
@@ -44,6 +44,7 @@
     justify-content: center;
     height: 100%;
     width: 65px;
+    margin-right: 50px;
 }
 .cross-vertical{
     background-color: #7F0707;
@@ -84,7 +85,20 @@
     flex-direction: column;
     height: 100%;
 }
-
+.buttons{
+    margin-left: 50px;
+}
+@media screen and (max-width:560px){
+    .buttons{
+        display: none;
+    }
+    .cross{
+        display: none;
+    }
+    .header-title {
+        width: 100%;
+    }
+}
 
 
 

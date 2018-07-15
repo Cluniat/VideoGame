@@ -3,9 +3,9 @@
     <Header/>
     <SearchBar/>
     <div class="content">
-        <div :v-for="game in games">
-            {{game.name}}
-        </div>
+    <div v-for="game in games">
+        <GameBox :title="game.name" :img_url="game.cover?game.cover.url:'http://www.loudoweb.fr/images/me_manette_grand.png'"/>
+    </div>
     </div>
     <Footer/>
   </div>
@@ -16,15 +16,16 @@ import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
 import Footer from "../components/Footer";
+import GameBox from "../components/GameBox";
 
 export default {
   name: 'Home',
+    components: {GameBox, Footer, SearchBar, Header},
     data() {
         return {
             games: ''
         }
     },
-    components: {Footer, SearchBar, Header},
     props: {
     msg: String
   },
@@ -42,6 +43,7 @@ export default {
         .then(response => {
             // Do work here
             this.games = response.data;
+
         })
         .catch(e => {
             /* eslint-disable */
@@ -91,5 +93,18 @@ li {
 }
 a {
   color: #42b983;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 </style>
