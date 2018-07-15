@@ -1,10 +1,12 @@
 <template>
   <div class="home">
+    <Modal v-if="toggleModal"/>
     <Header/>
     <SearchBar/>
     <div class="content">
-    <div v-for="game in games">
-        <GameBox :title="game.name" :img_url="game.cover?game.cover.url:'http://www.loudoweb.fr/images/me_manette_grand.png'"/>
+    <Loading v-if="loading"/>
+    <div v-if="!loading" v-for="game in games">
+        <GameBox :title="game.name" :img_url="game.cover?game.cover.url:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary"/>
     </div>
     </div>
     <Footer/>
@@ -17,30 +19,28 @@ import SearchBar from "../components/SearchBar";
 import axios from "axios";
 import Footer from "../components/Footer";
 import GameBox from "../components/GameBox";
-
+import Modal from "../components/Modal";
+import Loading from "../components/Loading";
 
 export default {
   name: 'Home',
-    components: {GameBox, Footer, SearchBar, Header},
+    components: {Loading, Modal, GameBox, Footer, SearchBar, Header},
     props: {
     msg: String
   },
 
     mounted: function() {
-
         var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
         axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
             headers: {
                 'user-key': '737bc70227de8d102078bcc22c8992a7',
                 Accept: 'application/json',
-                // 'Access-Control-Allow-Origin': '*',
-                // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
             },
         })
         .then(response => {
             // Do work here
             this.$store.commit('setGames', response.data)
-
+            this.$store.commit('setLoading', false)
         })
         .catch(e => {
             /* eslint-disable */
@@ -52,9 +52,14 @@ export default {
     computed:{
       games(){
           return this.$store.state.games
-      }
-    }
-
+      },
+        toggleModal(){
+            return this.$store.state.toggleModal
+        },
+        loading(){
+            return this.$store.state.loading
+        }
+    },
 
 }
 </script>
@@ -87,6 +92,6 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 55px;
+    padding-bottom: 75px;
 }
 </style>

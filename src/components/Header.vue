@@ -1,22 +1,23 @@
 <template>
-    <div class="header">
-        <div class="cross">
-            <div class="cross-vertical"></div>
-            <div class="cross-horizontal"></div>
-        </div>
-        <div class="header-title">
-            <h1>GAME INDEX</h1>
-            <div>
-            <div class="start"></div>
-            <div class="select"></div>
+    <div class="container">
+        <div class="header">
+            <div class="cross">
+                <div class="cross-vertical"></div>
+                <div class="cross-horizontal"></div>
+            </div>
+            <div class="header-title">
+                <h1>GAME INDEX</h1>
+            </div>
+
+            <div class="buttons">
+                <div class="buttonA"></div>
+                <div class="buttonB"></div>
             </div>
         </div>
-
-        <div class="buttons">
-            <div class="buttonA"></div>
-            <div class="buttonB"></div>
+        <div class="bottomBtns">
+            <div class="start"></div>
+            <div class="select"></div>
         </div>
-
     </div>
 </template>
 
@@ -29,8 +30,26 @@
 </script>
 
 <style scoped>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #067f35;
+        width: 100%;
+    }
+    .bottomBtns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 50px;
+        margin: 0;
+        color: #000;
+        text-align: center;
+    }
 .header{
-    background-color: #D93D3D;
     height: 125px;
     display: flex;
     align-items: center;
@@ -47,14 +66,14 @@
     margin-right: 50px;
 }
 .cross-vertical{
-    background-color: #7F0707;
+    background-color: #35ff71;
     height: 65px;
     width: 20px;
     position: absolute;
 
 }
 .cross-horizontal{
-    background-color: #7F0707;
+    background-color: #35ff71;
     height: 20px;
     width: 65px;
     position: absolute;
@@ -62,7 +81,7 @@
 
 
     .buttonA, .buttonB{
-        background-color: #7F0707;
+        background-color: #35ff71;
         height: 35px;
         width: 35px;
         border-radius: 50%;
@@ -71,7 +90,7 @@
     }
 
 .start, .select{
-    background-color: #7F0707;
+    background-color: #35ff71;
     height: 10px;
     width: 50px;
     display: inline-block;
@@ -88,19 +107,22 @@
 .buttons{
     margin-left: 50px;
 }
-@media screen and (max-width:560px){
-    .buttons{
-        display: none;
-    }
-    .cross{
+@media screen and (max-width:724px){
+    .buttons, .cross, .bottomBtns{
         display: none;
     }
     .header-title {
         width: 100%;
     }
+
 }
 
 
+    @media screen and (max-width: 850px) {
+        .cross, .buttons {
+            margin: 5px !important;
+        }
+    }
 
 
 </style>
