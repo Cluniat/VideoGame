@@ -18,21 +18,18 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import GameBox from "../components/GameBox";
 
+
 export default {
   name: 'Home',
     components: {GameBox, Footer, SearchBar, Header},
-    data() {
-        return {
-            games: ''
-        }
-    },
     props: {
     msg: String
   },
+
     mounted: function() {
 
         var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-        axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?fields=*', {
+        axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
             headers: {
                 'user-key': '737bc70227de8d102078bcc22c8992a7',
                 Accept: 'application/json',
@@ -42,7 +39,7 @@ export default {
         })
         .then(response => {
             // Do work here
-            this.games = response.data;
+            this.$store.commit('setGames', response.data)
 
         })
         .catch(e => {
@@ -51,7 +48,14 @@ export default {
            // alert(e);
         });
 
+    },
+    computed:{
+      games(){
+          return this.$store.state.games
+      }
     }
+
+
 }
 </script>
 
@@ -83,5 +87,6 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 55px;
 }
 </style>

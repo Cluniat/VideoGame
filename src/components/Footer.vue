@@ -21,5 +21,6 @@
     width: 100%;
     border-top: 5px solid #D93D3D;
     bottom: 0;
+    height: 50px;
 }
 </style>
