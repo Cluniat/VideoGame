@@ -15,8 +15,14 @@
              default: false,
          }
         },
+        computed:{
+            loading(){
+                return this.$store.state.loading
+            }
+        },
         methods:{
             alphabet(){
+                this.$store.commit('setLoading', true)
                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
                 axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?filter[name][prefix]='+this.letter+'&fields=*', {
                     headers: {
@@ -29,7 +35,7 @@
                     .then(response => {
                         // Do work here
                         this.$store.commit('setGames', response.data)
-
+                        this.$store.commit('setLoading', false)
                     })
                     .catch(e => {
                         /* eslint-disable */
@@ -46,11 +52,12 @@
 .filterItem{
     display: inline-block;
     cursor: pointer;
+    color: #067f35;
 }
 i{
     margin: 0 3px;
 }
 .filterItem:hover a{
-    color: #D93D3D;
+    color: #35ff71;
 }    
 </style>

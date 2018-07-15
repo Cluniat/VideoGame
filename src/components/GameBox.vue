@@ -1,5 +1,5 @@
 <template>
-    <div class="center">
+    <div class="center" v-on:click="details()">
         <div class="box">
             <div class="box-front">
                 <img v-bind:src="img_url"/>
@@ -18,8 +18,21 @@
     name: "GameBox",
     props: [
       'img_url',
-      'title'
-    ]
+      'title',
+      'summary',
+    ],
+      methods:{
+          details(){
+              this.$store.commit('setToggleModal')
+              this.$store.commit('setDetails', [this.title, this.img_url, this.summary])
+          }
+      },
+      computed:{
+        toggleModal(){
+            return this.$store.state.toggleModal
+        }
+      }
+
   }
 </script>
 

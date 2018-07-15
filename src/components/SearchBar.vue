@@ -31,9 +31,12 @@
         </div>
         <i class="fa fa-search" v-on:click="toggleSearchInput"></i>
     </div>
-    <div class="searchInput" v-if="toggleSearch">
-        <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="search(research)"/>
-    </div>
+        <transition name="modal-fade">
+            <div class="searchInput" v-if="toggleSearch">
+                <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="search(research)"/>
+            </div>
+        </transition>
+
     </div>
 </template>
 
@@ -82,19 +85,25 @@
 
 <style scoped>
 .search{
-    background-color: #7F0707;
+    background-color: black;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    color: #ffffff;
+    color: #35ff71;
     text-align: center;
 }
 .searchInput{
-    background-color: rgba(0,0,0,0.3);
+    background-color: #000;
     height: 100px;
     width: 100%;
+}
+.fa-search{
+    cursor: pointer;
+}
+.fa-search:hover{
+    color: white;
 }
 input{
     background-color: transparent;
@@ -110,5 +119,15 @@ input:focus{
 }
 .filter{
     padding-right: 10px;
+}
+
+.modal-fade-enter,
+.modal-fade-leave-active {
+    opacity: 0;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity .5s ease
 }
 </style>
