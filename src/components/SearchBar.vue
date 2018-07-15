@@ -31,7 +31,7 @@
         </div>
         <i class="fa fa-search" v-on:click="toggleSearchInput"></i>
     </div>
-        <transition name="modal-fade">
+        <transition name="search-fade">
             <div class="searchInput" v-if="toggleSearch">
                 <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="search(research)"/>
             </div>
@@ -56,78 +56,69 @@
             toggleSearchInput: function(){
                 this.toggleSearch = !this.toggleSearch
             },
-                search:function (research) {
-                    var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-                    axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?search='+ research+'&fields=*', {
-                        headers: {
-                            'user-key': '737bc70227de8d102078bcc22c8992a7',
-                            Accept: 'application/json',
-                            // 'Access-Control-Allow-Origin': '*',
-                            // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-                        },
-                    })
-                        .then(response => {
-                            // Do work here
-                            this.$store.commit('setGames', response.data)
-                            /* eslint-disable */
-                            console.log(response)
-                        })
-                        .catch(e => {
-                            /* eslint-disable */
-                            console.log(e)
-                            // alert(e);
-                        });
-                }
-
+            search:function (research) {
+                var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+                axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?search='+ research+'&fields=*', {
+                    headers: {
+                        'user-key': '737bc70227de8d102078bcc22c8992a7',
+                        Accept: 'application/json',
+                    },
+                })
+                .then(response => {
+                    this.$store.commit('setGames', response.data)
+                })
+                .catch(e => {
+                    alert(e);
+                });
+            }
         }
     }
 </script>
 
 <style scoped>
-.search{
-    background-color: black;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    color: #35ff71;
-    text-align: center;
-}
-.searchInput{
-    background-color: #000;
-    height: 100px;
-    width: 100%;
-}
-.fa-search{
-    cursor: pointer;
-}
-.fa-search:hover{
-    color: white;
-}
-input{
-    background-color: transparent;
-    border: none;
-    height: 100%;
-    width: 100%;
-    padding-left: 20px;
-    font-size: 40px;
-    color: white;
-}
-input:focus{
-    outline: none;
-}
-.filter{
-    padding-right: 10px;
-}
+    .search{
+        background-color: black;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        color: #35ff71;
+        text-align: center;
+    }
+    .searchInput{
+        background-color: #000;
+        height: 100px;
+        width: 100%;
+    }
+    .fa-search{
+        cursor: pointer;
+    }
+    .fa-search:hover{
+        color: white;
+    }
+    input{
+        background-color: transparent;
+        border: none;
+        height: 100%;
+        width: 100%;
+        padding-left: 20px;
+        font-size: 40px;
+        color: white;
+    }
+    input:focus{
+        outline: none;
+    }
+    .filter{
+        padding-right: 10px;
+    }
+    .search-fade-enter,
+    .search-fade-leave-active {
+        opacity: 0;
+    }
+    .search-fade-enter-active,
+    .search-fade-leave-active {
+        transition: opacity .5s ease
+    }
 
-.modal-fade-enter,
-.modal-fade-leave-active {
-    opacity: 0;
-}
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-    transition: opacity .5s ease
-}
 </style>

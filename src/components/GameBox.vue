@@ -1,3 +1,9 @@
+<!--
+ - GameBox component
+ - @props img_url : url of the picture of the game cover
+ - @props title : title of the game
+ - @props summary : summary of the game
+-->
 <template>
     <div class="center" v-on:click="details()">
         <div class="box">
@@ -14,26 +20,25 @@
 </template>
 
 <script>
-  export default {
-    name: "GameBox",
-    props: [
-      'img_url',
-      'title',
-      'summary',
-    ],
-      methods:{
-          details(){
+    export default {
+        name: "GameBox",
+        props: [
+            'img_url',
+            'title',
+            'summary',
+        ],
+        methods:{
+            details(){
               this.$store.commit('setToggleModal')
               this.$store.commit('setDetails', [this.title, this.img_url, this.summary])
-          }
-      },
-      computed:{
-        toggleModal(){
-            return this.$store.state.toggleModal
+            }
+        },
+        computed:{
+            toggleModal(){
+                return this.$store.state.toggleModal
+            }
         }
-      }
-
-  }
+    }
 </script>
 
 <style scoped>
@@ -130,7 +135,5 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-
     }
-
 </style>

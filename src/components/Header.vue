@@ -37,11 +37,6 @@
         background-color: #067f35;
         width: 100%;
     }
-    .bottomBtns {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     h1 {
         font-family: 'Press Start 2P', cursive;
         font-size: 50px;
@@ -49,37 +44,50 @@
         color: #000;
         text-align: center;
     }
-.header{
-    height: 125px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-.cross{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 65px;
-    margin-right: 50px;
-}
-.cross-vertical{
-    background-color: #35ff71;
-    height: 65px;
-    width: 20px;
-    position: absolute;
+    .header{
+        height: 125px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .cross{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 65px;
+        margin-right: 50px;
+    }
+    .cross-vertical{
+        background-color: #35ff71;
+        height: 65px;
+        width: 20px;
+        position: absolute;
 
-}
-.cross-horizontal{
-    background-color: #35ff71;
-    height: 20px;
-    width: 65px;
-    position: absolute;
-}
-
-
+    }
+    .cross-horizontal{
+        background-color: #35ff71;
+        height: 20px;
+        width: 65px;
+        position: absolute;
+    }
+    .bottomBtns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .start, .select{
+        background-color: #35ff71;
+        height: 10px;
+        width: 50px;
+        display: inline-block;
+        margin: 0 10px;
+    }
+    .buttons{
+        margin-left: 50px;
+    }
     .buttonA, .buttonB{
         background-color: #35ff71;
         height: 35px;
@@ -88,41 +96,26 @@
         display: inline-block;
         margin: 10px;
     }
-
-.start, .select{
-    background-color: #35ff71;
-    height: 10px;
-    width: 50px;
-    display: inline-block;
-    margin: 0 10px;
-}
-
-.header-title{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-}
-.buttons{
-    margin-left: 50px;
-}
-@media screen and (max-width:724px){
-    .buttons, .cross, .bottomBtns{
-        display: none;
-    }
-    .header-title {
-        width: 100%;
+    .header-title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
     }
 
-}
-
-
+    /*Media query*/
+    @media screen and (max-width:724px){
+        .buttons, .cross, .bottomBtns{
+            display: none;
+        }
+        .header-title {
+            width: 100%;
+        }
+    }
     @media screen and (max-width: 850px) {
         .cross, .buttons {
             margin: 5px !important;
         }
     }
-
-
 </style>
