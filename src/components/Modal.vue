@@ -1,3 +1,7 @@
+<!--
+ - Modal component
+ - @props details[] : ['title','imgUrl','summary']
+-->
 <template>
     <div class="modal-backdrop" @click="close">
         <div class="modal">
@@ -23,7 +27,6 @@
 <script>
     export default {
         name: 'Modal',
-
         methods: {
             close() {
                 this.$store.commit('setToggleModal')
@@ -34,7 +37,6 @@
                 return this.$store.state.details
             }
         }
-
     }
 </script>
 
@@ -52,27 +54,12 @@
         z-index: 999;
         padding: 0 30%;
     }
-    @media screen and (max-width: 942px) {
-        .modal-backdrop {
-            padding: 0 10%;
-        }
-    }
-
     .summary, .gameCover {
         width: 50%;
         margin: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-    }
-    @media screen and (max-width: 620px) {
-        .summary, .gameCover {
-            width: 100%;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
     }
     .gameCover img{
         height: 150px;
@@ -87,12 +74,10 @@
         display: flex;
         flex-direction: column;
     }
-
     .modal-header{
         padding: 15px;
         display: flex;
     }
-
     .modal-header {
         border-bottom: 1px solid #eeeeee;
         color: #067f35;
@@ -102,7 +87,6 @@
         display: flex;
         align-items: center;
     }
-
     .modal-body {
         position: relative;
         padding: 20px 10px;
@@ -111,15 +95,21 @@
         align-items: center;
         flex-wrap: wrap;
     }
-
-    .btn-close {
-        border: none;
-        font-size: 20px;
-        padding: 20px;
-        cursor: pointer;
-        font-weight: bold;
-        color: #7F0707;
-        background: transparent;
+    /*Media query*/
+    @media screen and (max-width: 942px) {
+        .modal-backdrop {
+            padding: 0 10%;
+        }
     }
+    @media screen and (max-width: 620px) {
+        .summary, .gameCover {
+            width: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
 
 </style>

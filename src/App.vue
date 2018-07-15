@@ -6,21 +6,11 @@
 
 <script>
 import Home from './pages/Home.vue'
-// import axios from 'axios'
 export default {
   name: 'app',
   components: {
     Home
   },
-  created(){
-      // axios.post("https://api-endpoint.igdb.com/headers/",
-      //     {
-      //         "api_header": {
-      //             "header": "Access-Control-Allow-Origin",
-      //              "value": "localhost:8080"
-      //         }
-      //     })
-  }
 }
 </script>
 

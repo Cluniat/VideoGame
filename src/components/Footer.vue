@@ -13,14 +13,14 @@
 <style scoped>
 
 .footer{
-    background-color: #067f35;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    width: 100%;
-    border-top: 5px solid #35ff71;
-    bottom: 0;
+    background-color: #067f35;
     height: 50px;
+    width: 100%;
+    bottom: 0;
+    border-top: 5px solid #35ff71;
 }
 </style>

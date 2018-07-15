@@ -23,12 +23,11 @@ import Modal from "../components/Modal";
 import Loading from "../components/Loading";
 
 export default {
-  name: 'Home',
+    name: 'Home',
     components: {Loading, Modal, GameBox, Footer, SearchBar, Header},
     props: {
-    msg: String
-  },
-
+        msg: String
+    },
     mounted: function() {
         var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
         axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
@@ -38,21 +37,17 @@ export default {
             },
         })
         .then(response => {
-            // Do work here
             this.$store.commit('setGames', response.data)
             this.$store.commit('setLoading', false)
         })
         .catch(e => {
-            /* eslint-disable */
-            console.log(e)
-           // alert(e);
+            alert(e);
         });
-
     },
     computed:{
-      games(){
-          return this.$store.state.games
-      },
+        games(){
+            return this.$store.state.games
+        },
         toggleModal(){
             return this.$store.state.toggleModal
         },
@@ -60,38 +55,25 @@ export default {
             return this.$store.state.loading
         }
     },
-
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.content{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-}
-.home{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 75px;
-}
+    a {
+      color: #42b983;
+    }
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+    }
+    .home{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 75px;
+    }
 </style>
