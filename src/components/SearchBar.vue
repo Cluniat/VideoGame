@@ -32,25 +32,50 @@
         <i class="fa fa-search" v-on:click="toggleSearchInput"></i>
     </div>
     <div class="searchInput" v-if="toggleSearch">
-        <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="research(research)"/>
+        <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="search(research)"/>
     </div>
     </div>
 </template>
 
 <script>
     import FilterItem from "./FilterItem";
+    import axios from 'axios'
     export default {
         name: "SearchBar",
         components: {FilterItem},
         data() {
             return {
-                toggleSearch: false
+                toggleSearch: false,
+                research:''
             }
         },
         methods: {
             toggleSearchInput: function(){
                 this.toggleSearch = !this.toggleSearch
-            }
+            },
+                search:function (research) {
+                    var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+                    axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?search='+ research+'&fields=*', {
+                        headers: {
+                            'user-key': '737bc70227de8d102078bcc22c8992a7',
+                            Accept: 'application/json',
+                            // 'Access-Control-Allow-Origin': '*',
+                            // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                        },
+                    })
+                        .then(response => {
+                            // Do work here
+                            this.$store.commit('setGames', response.data)
+                            /* eslint-disable */
+                            console.log(response)
+                        })
+                        .catch(e => {
+                            /* eslint-disable */
+                            console.log(e)
+                            // alert(e);
+                        });
+                }
+
         }
     }
 </script>
