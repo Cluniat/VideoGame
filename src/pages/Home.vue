@@ -2,6 +2,7 @@
   <div class="home">
     <Header/>
     <SearchBar/>
+    <Footer/>
   </div>
 </template>
 
@@ -9,10 +10,11 @@
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 export default {
   name: 'Home',
-    components: {SearchBar, Header},
+    components: {Footer, SearchBar, Header},
     props: {
     msg: String
   },
