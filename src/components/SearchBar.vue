@@ -32,7 +32,7 @@
         <i class="fa fa-search" v-on:click="toggleSearchInput"></i>
     </div>
     <div class="searchInput" v-if="toggleSearch">
-        <input type="text" placeholder="Recherche..."/>
+        <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="research(research)"/>
     </div>
     </div>
 </template>

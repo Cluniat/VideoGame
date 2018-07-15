@@ -49,6 +49,29 @@ export default {
            // alert(e);
         });
 
+    },
+    methods:{
+      research:function (research) {
+
+          var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+          axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?search='+ research, {
+              headers: {
+                  'user-key': '737bc70227de8d102078bcc22c8992a7',
+                  Accept: 'application/json',
+                  // 'Access-Control-Allow-Origin': '*',
+                  // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+              },
+          })
+              .then(response => {
+                  // Do work here
+                  this.games = response.data;
+              })
+              .catch(e => {
+                  /* eslint-disable */
+                  console.log(e)
+                  // alert(e);
+              });
+      }
     }
 }
 </script>
