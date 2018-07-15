@@ -7,6 +7,7 @@
             {{game.name}}
         </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -14,15 +15,16 @@
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 export default {
   name: 'Home',
-    components: {SearchBar, Header},
     data() {
         return {
             games: ''
         }
     },
+    components: {Footer, SearchBar, Header},
     props: {
     msg: String
   },
