@@ -2,6 +2,11 @@
   <div class="home">
     <Header/>
     <SearchBar/>
+    <div class="content">
+        <div :v-for="game in games">
+            {{game.name}}
+        </div>
+    </div>
   </div>
 </template>
 
@@ -13,23 +18,28 @@ import axios from "axios";
 export default {
   name: 'Home',
     components: {SearchBar, Header},
+    data() {
+        return {
+            games: ''
+        }
+    },
     props: {
     msg: String
   },
-    created: function() {
+    mounted: function() {
 
-
-        axios.get("https://api.raidhead.com/fra/games/index.json", {
+        var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+        axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?fields=*', {
             headers: {
-                "user-key": "737bc70227de8d102078bcc22c8992a7",
-                Accept: "application/json",
+                'user-key': '737bc70227de8d102078bcc22c8992a7',
+                Accept: 'application/json',
                 // 'Access-Control-Allow-Origin': '*',
                 // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
             },
         })
         .then(response => {
             // Do work here
-            alert(response.data);
+            this.games = response.data;
         })
         .catch(e => {
             /* eslint-disable */
