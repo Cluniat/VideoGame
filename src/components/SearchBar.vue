@@ -58,13 +58,13 @@
 <style scoped>
 .search{
     background-color: #7F0707;
-    height: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 20px;
     color: #ffffff;
+    text-align: center;
 }
 .searchInput{
     background-color: rgba(0,0,0,0.3);
@@ -82,5 +82,8 @@ input{
 }
 input:focus{
     outline: none;
+}
+.filter{
+    padding-right: 10px;
 }
 </style>
