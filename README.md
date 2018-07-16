@@ -32,8 +32,12 @@ npm run serve
  - filtrer par lettre alphabetique: Affiche uniquement les jeux dont le titre débute par la lettre sélectionnée par l'utilisateur
  
  - fenêtre modale: Au clique sur un jeu, elle s'ouvre et contient la description de ce jeu.   
+ 
+ - pagination: mise en place d'un bouton permettant de faire apparaitre les jeux suivants 
 ## Amélioration
-- Pagination : Il est possible d'afficher l'intégralité des jeux recensés par l'API en les faisant apparaitre sur plusieurs pages
 - composant de notation : Il est possible d'ajouter dans la modale l'affichage de la notation du jeu, par exemple avec des étoiles
+
 - Mise en place du sass : Permet de simplifier, d'organiser et de dynamiser le CSS
+
+- Gérer les appels API de manière globale
 
