@@ -22,6 +22,9 @@ const store = new Vuex.Store({
         setGames (state, games){
           state.games = games
         },
+        addGames(state, games){
+            state.games = state.games.concat(games)
+        },
         setToggleModal(state){
             state.toggleModal = !state.toggleModal
         },

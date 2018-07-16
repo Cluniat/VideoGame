@@ -33,7 +33,7 @@
     </div>
         <transition name="search-fade">
             <div class="searchInput" v-if="toggleSearch">
-                <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="search(research)"/>
+                <input type="text" placeholder="Recherche..." v-model="research" v-on:keyup.enter="search(research)" :autofocus="toggleSearch"/>
             </div>
         </transition>
 

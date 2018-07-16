@@ -8,6 +8,9 @@
     <div v-if="!loading" v-for="game in games">
         <GameBox :title="game.name" :img_url="game.cover?'//images.igdb.com/igdb/image/upload/t_cover_big/'+game.cover.cloudinary_id:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary?game.summary:'No description available for this game'"/>
     </div>
+    <div class="nextBtn" v-on:click="getNextPage">
+    <NextPageButton/>
+    </div>
     </div>
     <Footer/>
   </div>
@@ -21,12 +24,18 @@ import Footer from "../components/Footer";
 import GameBox from "../components/GameBox";
 import Modal from "../components/Modal";
 import Loading from "../components/Loading";
+import NextPageButton from "../components/NextPageButton";
 
 export default {
     name: 'Home',
-    components: {Loading, Modal, GameBox, Footer, SearchBar, Header},
+    components: {NextPageButton, Loading, Modal, GameBox, Footer, SearchBar, Header},
     props: {
         msg: String
+    },
+    data() {
+        return {
+            nextPage: ''
+        }
     },
     mounted: function() {
        this.attemptGames()
@@ -43,15 +52,16 @@ export default {
         }
     },
     methods: {
-        attemptGames(){
+        attemptGames() {
             var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-            axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?fields=*&order=popularity:desc&limit=50&scroll=1', {
+            axios.get(proxyUrl + 'https://api-endpoint.igdb.com/games/?fields=*&order=popularity:desc&limit=50&scroll=1', {
                 headers: {
                     'user-key': '737bc70227de8d102078bcc22c8992a7',
                     Accept: 'application/json',
                 },
             })
                 .then(response => {
+                    this.nextPage = response.headers['x-next-page']
                     this.$store.commit('setGames', response.data)
                     this.$store.commit('setLoading', false)
 
@@ -59,6 +69,24 @@ export default {
                 .catch(e => {
                     alert(e);
                 });
+        },
+        getNextPage() {
+            var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+            axios.get(proxyUrl + 'https://api-endpoint.igdb.com'+this.nextPage, {
+                headers: {
+                    'user-key': '737bc70227de8d102078bcc22c8992a7',
+                    Accept: 'application/json',
+                },
+            })
+                .then(response => {
+                    this.nextPage = response.headers['x-next-page']
+                    this.$store.commit('addGames', response.data)
+                    this.$store.commit('setLoading', false)
+                })
+                .catch(e => {
+                    alert(e);
+                });
+
         }
     }
 }
@@ -81,5 +109,10 @@ export default {
         align-items: center;
         flex-direction: column;
         padding-bottom: 75px;
+    }
+    .nextBtn{
+        width: 100%;
+        text-align: center;
+        margin: 20px 0
     }
 </style>
