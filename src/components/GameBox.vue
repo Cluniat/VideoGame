@@ -11,6 +11,7 @@
                 <img v-bind:src="img_url"/>
             </div>
             <div class="cd">
+                <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
                 <span/>
             </div>
             <div class="box-back"></div>
@@ -31,8 +32,6 @@
             details(){
               this.$store.commit('setToggleModal')
               this.$store.commit('setDetails', [this.title, this.img_url, this.summary])
-                // eslint-disable-next-line
-                console.log(this.$store.state.details)
             }
         },
         computed:{
@@ -109,6 +108,9 @@
         z-index: 2;
         transition: all 0.5s ease 0s;
         border: 2px solid #1d1d1d;
+    }
+    .cd .fa {
+        z-index: 999;
     }
     .cd span {
         position: absolute;
