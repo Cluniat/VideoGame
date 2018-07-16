@@ -29,7 +29,7 @@
             filterPrefix(){
                 this.$store.commit('setLoading', true)
                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-                axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?filter[name][prefix]='+this.letter+'&fields=*', {
+                axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?filter[name][prefix]='+this.letter+'&fields=*&order=popularity:desc&limit=50&scroll=1', {
                     headers: {
                         'user-key': '737bc70227de8d102078bcc22c8992a7',
                         Accept: 'application/json',

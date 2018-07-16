@@ -6,7 +6,7 @@
     <div class="content">
     <Loading v-if="loading"/>
     <div v-if="!loading" v-for="game in games">
-        <GameBox :title="game.name" :img_url="game.cover?'//images.igdb.com/igdb/image/upload/t_1080p/'+game.cover.cloudinary_id:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary?game.summary:'No description available for this game'"/>
+        <GameBox :title="game.name" :img_url="game.cover?'//images.igdb.com/igdb/image/upload/t_cover_big/'+game.cover.cloudinary_id:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary?game.summary:'No description available for this game'"/>
     </div>
     </div>
     <Footer/>
