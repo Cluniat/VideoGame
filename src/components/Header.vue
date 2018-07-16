@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="header">
+        <div class="header" v-on:click="attemptGames">
             <div class="cross">
                 <div class="cross-vertical"></div>
                 <div class="cross-horizontal"></div>
@@ -23,9 +23,29 @@
 
 <script>
     import SearchBar from "./SearchBar";
+    import axios from 'axios'
     export default {
         name: "Header",
-        components: {SearchBar}
+        components: {SearchBar},
+        methods: {
+            attemptGames(){
+                this.$store.commit('setLoading', true)
+                var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+                axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
+                    headers: {
+                        'user-key': '737bc70227de8d102078bcc22c8992a7',
+                        Accept: 'application/json',
+                    },
+                })
+                .then(response => {
+                    this.$store.commit('setGames', response.data)
+                    this.$store.commit('setLoading', false)
+                })
+                .catch(e => {
+                    alert(e);
+                });
+            }
+        }
     }
 </script>
 
@@ -36,6 +56,7 @@
         justify-content: center;
         background-color: #067f35;
         width: 100%;
+        cursor: pointer;
     }
     h1 {
         font-family: 'Press Start 2P', cursive;

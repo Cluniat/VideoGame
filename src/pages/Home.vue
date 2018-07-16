@@ -29,20 +29,7 @@ export default {
         msg: String
     },
     mounted: function() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-        axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
-            headers: {
-                'user-key': '737bc70227de8d102078bcc22c8992a7',
-                Accept: 'application/json',
-            },
-        })
-        .then(response => {
-            this.$store.commit('setGames', response.data)
-            this.$store.commit('setLoading', false)
-        })
-        .catch(e => {
-            alert(e);
-        });
+       this.attemptGames()
     },
     computed:{
         games(){
@@ -55,6 +42,24 @@ export default {
             return this.$store.state.loading
         }
     },
+    methods: {
+        attemptGames(){
+            var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+            axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
+                headers: {
+                    'user-key': '737bc70227de8d102078bcc22c8992a7',
+                    Accept: 'application/json',
+                },
+            })
+                .then(response => {
+                    this.$store.commit('setGames', response.data)
+                    this.$store.commit('setLoading', false)
+                })
+                .catch(e => {
+                    alert(e);
+                });
+        }
+    }
 }
 </script>
 
