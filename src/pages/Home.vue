@@ -6,7 +6,7 @@
     <div class="content">
     <Loading v-if="loading"/>
     <div v-if="!loading" v-for="game in games">
-        <GameBox :title="game.name" :img_url="game.cover?game.cover.url:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary"/>
+        <GameBox :title="game.name" :img_url="game.cover?'//images.igdb.com/igdb/image/upload/t_1080p/'+game.cover.cloudinary_id:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary?game.summary:'No description available for this game'"/>
     </div>
     </div>
     <Footer/>
@@ -45,7 +45,7 @@ export default {
     methods: {
         attemptGames(){
             var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-            axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?order=rating&limit=50&scroll=1&fields=*', {
+            axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?fields=*&order=popularity:desc&limit=50&scroll=1', {
                 headers: {
                     'user-key': '737bc70227de8d102078bcc22c8992a7',
                     Accept: 'application/json',
@@ -54,6 +54,7 @@ export default {
                 .then(response => {
                     this.$store.commit('setGames', response.data)
                     this.$store.commit('setLoading', false)
+
                 })
                 .catch(e => {
                     alert(e);

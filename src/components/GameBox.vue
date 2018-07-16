@@ -31,6 +31,8 @@
             details(){
               this.$store.commit('setToggleModal')
               this.$store.commit('setDetails', [this.title, this.img_url, this.summary])
+                // eslint-disable-next-line
+                console.log(this.$store.state.details)
             }
         },
         computed:{
