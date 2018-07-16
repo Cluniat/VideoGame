@@ -1,4 +1,5 @@
 # Game Index
+Application web développée en VueJs dans un style retro-gaming présentant un catalogue de jeux vidéos. 
 
 ## Utilisation
 ```
@@ -26,13 +27,13 @@ npm run serve
 ## Travail réalisé
  - rechercher: Barre de recherche
  
- - affichage des 50 meilleur jeux: Au niveau de la page d'acceuil du site
+ - affichage des 50 meilleurs jeux: Au niveau de la page d'acceuil du site
  
  - filtrer par lettre alphabetique: Affiche uniquement les jeux dont le titre débute par la lettre sélectionnée par l'utilisateur
  
  - fenêtre modale: Au clique sur un jeu, elle s'ouvre et contient la description de ce jeu.   
 ## Amélioration
-- Pagination ; Il est possible d'afficher l'intégralité des jeux recensés par l'API en les faisant apparaitre sur plusieurs pages
+- Pagination : Il est possible d'afficher l'intégralité des jeux recensés par l'API en les faisant apparaitre sur plusieurs pages
 - composant de notation : Il est possible d'ajouter dans la modale l'affichage de la notation du jeu, par exemple avec des étoiles
 - Mise en place du sass : Permet de simplifier, d'organiser et de dynamiser le CSS
 
