@@ -16,7 +16,7 @@
                         <img :src="details[1]"/>
                     </div>
                     <div class="summary">
-                        {{details[2]}}
+                        {{cutDetails()}}
                     </div>
                 </slot>
             </section>
@@ -30,6 +30,12 @@
         methods: {
             close() {
                 this.$store.commit('setToggleModal')
+            },
+            cutDetails(){
+                if(this.$store.state.details[2].length>1300){
+                    this.$store.state.details[2] = this.$store.state.details[2].substring(0,1300)+"..."
+                }
+                return this.$store.state.details[2]
             },
         },
         computed: {
