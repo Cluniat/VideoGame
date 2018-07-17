@@ -32,7 +32,8 @@
             details(){
               this.$store.commit('setToggleModal')
               this.$store.commit('setDetails', [this.title, this.img_url, this.summary])
-            }
+            },
+
         },
         computed:{
             toggleModal(){

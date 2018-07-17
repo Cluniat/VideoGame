@@ -17,8 +17,8 @@ const store = new Vuex.Store({
         toggleModal: false,
         details:['title','img','summary'],
         loading: true,
-        onResearch: false
-
+        onResearch: false,
+        clicked: false
     },
     mutations:{
         setGames (state, games){
@@ -38,6 +38,9 @@ const store = new Vuex.Store({
         },
         setOnResearch(state, onResearch){
             state.onResearch = onResearch
+        },
+        setClicked(state){
+            state.clicked = !state.clicked
         }
 
     }
