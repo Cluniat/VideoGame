@@ -18,6 +18,7 @@ const store = new Vuex.Store({
         details:['title','img','summary'],
         loading: true,
         onResearch: false
+
     },
     mutations:{
         setGames (state, games){
@@ -38,6 +39,7 @@ const store = new Vuex.Store({
         setOnResearch(state, onResearch){
             state.onResearch = onResearch
         }
+
     }
 })
 
