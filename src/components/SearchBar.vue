@@ -29,7 +29,7 @@
         <FilterItem letter="Y"/>
         <FilterItem letter="Z"/>
         </div>
-        <i class="fa fa-search" v-on:click="toggleSearchInput"></i>
+        <i class="fa fa-search" v-on:click="toggleSearchInput" ></i>
     </div>
         <transition name="search-fade">
             <div class="searchInput" v-if="toggleSearch">
@@ -62,6 +62,7 @@
                 this.toggleSearch = !this.toggleSearch
             },
             search:function (research) {
+                this.$store.commit('setOnResearch',true)
                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
                 axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?search='+ research+'&fields=*', {
                     headers: {

@@ -28,6 +28,7 @@
         methods:{
             filterPrefix(){
                 this.$store.commit('setLoading', true)
+                this.$store.commit('setOnResearch', true)
                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
                 axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?filter[name][prefix]='+this.letter+'&fields=*&order=popularity:desc&limit=50&scroll=1', {
                     headers: {

@@ -30,6 +30,7 @@
         methods: {
             attemptGames(){
                 this.$store.commit('setLoading', true)
+                this.$store.commit('setOnResearch', false)
                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
                 axios.get(proxyUrl+'https://api-endpoint.igdb.com/games/?fields=*&order=popularity:desc&limit=50&scroll=1', {
                     headers: {
