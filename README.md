@@ -12,12 +12,21 @@ npm run serve
 ## Choix techniques
  - Trello : Outil de gestion de projet en ligne 
  https://trello.com/b/5qh8Upll/page-jeux-vid%C3%A9o-apollo
+ 
  - Lunacy : Outil de création de maquette qui aide la transition de la conception au développement.
+ 
  - feature branch: Workflow adapté au travail réalisé ici
+ 
  - VueJs: Framework front adapté au travail réalisé ici
+ 
  - VueX : Permet la création d'un store qui met en place des variables globales pouvant donc être appelées ou modifiées sur l'ensemble du projet
+ 
  - axios : Permet de mettre en place les appels à l'API
+ 
+ - postman : Logiciel permettant de tester les appels API 
+ 
  - igdb : API contenant une base de donnée de jeux vidéos
+ 
  - cors anywhere: Serveur proxy 
  https://cors-anywhere.herokuapp.com/
  

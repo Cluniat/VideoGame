@@ -52,6 +52,11 @@
                 research:''
             }
         },
+        computed:{
+          nextPage(){
+              return this.$store.state.nextPage
+          }
+        },
         methods: {
             toggleSearchInput: function(){
                 this.toggleSearch = !this.toggleSearch
@@ -70,7 +75,8 @@
                 .catch(e => {
                     alert(e);
                 });
-            }
+            },
+
         }
     }
 </script>

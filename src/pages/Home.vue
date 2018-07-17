@@ -8,7 +8,7 @@
     <div v-if="!loading" v-for="game in games">
         <GameBox :title="game.name" :img_url="game.cover?'//images.igdb.com/igdb/image/upload/t_cover_big/'+game.cover.cloudinary_id:'http://www.loudoweb.fr/images/me_manette_grand.png'" :summary="game.summary?game.summary:'No description available for this game'"/>
     </div>
-    <div class="nextBtn" v-on:click="getNextPage">
+    <div class="nextBtn" v-on:click="getNextPage()">
     <NextPageButton/>
     </div>
     </div>
@@ -49,7 +49,7 @@ export default {
         },
         loading(){
             return this.$store.state.loading
-        }
+        },
     },
     methods: {
         attemptGames() {
@@ -79,7 +79,7 @@ export default {
                 },
             })
                 .then(response => {
-                    this.nextPage = response.headers['x-next-page']
+                    // this.nextPage = response.headers['x-next-page']
                     this.$store.commit('addGames', response.data)
                     this.$store.commit('setLoading', false)
                 })

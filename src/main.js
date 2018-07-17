@@ -16,7 +16,7 @@ const store = new Vuex.Store({
         games:[],
         toggleModal: false,
         details:['title','img','summary'],
-        loading: true
+        loading: true,
     },
     mutations:{
         setGames (state, games){
@@ -33,7 +33,7 @@ const store = new Vuex.Store({
         },
         setLoading(state, loading) {
             state.loading = loading
-        }
+        },
     }
 })
 
