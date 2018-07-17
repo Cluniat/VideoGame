@@ -36,13 +36,15 @@ npm run serve
 ## Travail réalisé
  - rechercher: Barre de recherche
  
- - affichage des 50 meilleurs jeux: Au niveau de la page d'acceuil du site
+ - affichage des 50 jeux les plus populaires: Au niveau de la page d'acceuil du site
+ 
+ - pagination: mise en place d'un bouton permettant de faire apparaitre les jeux suivants 
  
  - filtrer par lettre alphabetique: Affiche uniquement les jeux dont le titre débute par la lettre sélectionnée par l'utilisateur
  
  - fenêtre modale: Au clique sur un jeu, elle s'ouvre et contient la description de ce jeu.   
  
- - pagination: mise en place d'un bouton permettant de faire apparaitre les jeux suivants 
+ 
 ## Amélioration
 - composant de notation : Il est possible d'ajouter dans la modale l'affichage de la notation du jeu, par exemple avec des étoiles
 
