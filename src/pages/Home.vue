@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Modal v-if="toggleModal"/>
+    <Modal/>
     <Header/>
     <SearchBar/>
     <div class="content">
